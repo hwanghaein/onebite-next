@@ -7,7 +7,8 @@ export const getStaticPaths = () => {
   return {
     // 어떤 경로들(URL 파라미터들)이 존재할 수 있는지 배열로 반환
     paths: [{ params: { id: "1" } }, { params: { id: "2" } }, { params: { id: "3" } }], 
-    fallback: false, // 보험, 대비책 -> 존재하지 않는 URL로 접속 요청 보낼 시 
+    fallback: 
+    'blocking', // 보험, 대비책 -> SSR처럼 즉각적 페이지 생성해서 리턴해줌, 새로운 데이터(도서)가 계속 추가되어야하는 상황에도 사용이 가능하다.
   }
 }
 
@@ -16,7 +17,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const book = await fetchOneBook(Number(id))
 
   return {
-    props: { book, },
+    props: { book, }, 
   };
 }
 
