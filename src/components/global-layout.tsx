@@ -5,7 +5,7 @@ import style from "./global-layout.module.css";
 
 export default function GlobalLayout({
   children, }: {
-    childen: ReactNode
+    children: ReactNode
   }) {
   return (
     <div className={style.container}>
